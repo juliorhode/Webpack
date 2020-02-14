@@ -1,0 +1,106 @@
+Documentacion de webpack: https://webpack.js.org/concepts/
+
+----------------------
+ Inicion de proyecto
+----------------------
+npm init --yes
+
+---------
+ Webpack
+---------
+
+Empaquetador de modulos de frontend. Este toma los archivos que necesitas para tu aplicacion, y empaquetarlas y prepararlas para produccion. Se configura con un objeto de javascript.
+
+------------------------
+ Instalacion de Webpack
+------------------------
+npm i webpack
+npm i webpack-cli 
+
+----------------------
+ Utilizar de Webpack
+----------------------
+webpack app.js -o output.js
+
+Esta forma es para ejecutar cuando el modulo es local solo al proyecto y no instalado de forma global
+npx webpack app.js -o output.js
+
+Resultado:
+Hash: 9c18fbac935d84653cec
+Version: webpack 4.41.6
+Time: 414ms
+Built at: 11/02/2020 3:12:07 p. m.
+    Asset      Size  Chunks             Chunk Names
+output.js  1.03 KiB       0  [emitted]  main
+Entrypoint main = output.js
+[0] ./app.js + 1 modules 180 bytes {0} [built]
+    | ./app.js 118 bytes [built]
+    | ./message.js 62 bytes [built]
+
+WARNING in configuration
+The 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.
+You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/
+
+---------------
+ Configuración
+---------------
+Se debe crear un archivo llamado: webpack.config.js
+Este archivo va en la raiz del proyecto, fuera de todo.
+Ya con esto no hay necesidad de ejecutar npx webpack src/app.js -o built/output.js, sino que como creamos el archivo webpack.config.js, con tan solo ejecutar npx webpack, nos basta.
+
+Para asignar modo produccion: npx webpack -p
+
+Hash: e52e9f78d3034d83f539
+Version: webpack 4.41.6
+Time: 354ms
+Built at: 12/02/2020 2:23:05 p. m.
+    Asset      Size  Chunks             Chunk Names
+bundle.js  1.03 KiB       0  [emitted]  main
+Entrypoint main = bundle.js
+[0] ./src/app.js + 1 modules 180 bytes {0} [built]
+    | ./src/app.js 118 bytes [built]
+    | ./src/message.js 62 bytes [built]
+
+Para asignar modo desarrollo: npx webpack -d  
+
+Hash: 8429f05a0f2c2dafbb92
+Version: webpack 4.41.6
+Time: 302ms
+Built at: 12/02/2020 2:24:21 p. m.
+    Asset      Size  Chunks             Chunk Names
+bundle.js  5.47 KiB    main  [emitted]  main
+Entrypoint main = bundle.js
+[./src/app.js] 118 bytes {main} [built]
+[./src/message.js] 62 bytes {main} [built]
+
+---------
+ Plugins
+---------
+HtmlWebpackPlugin
+Simplifica la creación de archivos HTML para servir sus paquetes de paquetes web. Esto es especialmente útil para paquetes de paquetes web que incluyen un hash en el nombre del archivo que cambia cada compilación. Puede dejar que el complemento genere un archivo HTML para usted, suministrar su propia plantilla usando plantillas lodash o usar su propio cargador.
+
+npm install --save-dev html-webpack-plugin
+
+--------------------------
+ STYLE LOADER CSS LOADER
+--------------------------
+Para inyectar el CSS al DOM
+npm install style-loader
+npm install css-loader
+
+---------
+ JQUERY
+---------
+npm i jquery
+
+------------------------
+ Servidor de desarrollo
+------------------------
+npm install webpack-dev-server
+
+Iniciar
+--------
+npx webpack-dev-server
+
+
+https://www.youtube.com/watch?v=vF2emKbaP4M
